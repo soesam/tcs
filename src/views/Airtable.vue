@@ -27,7 +27,7 @@ export default {
   props: ["columns"],
   data: function() {
     return {
-      apiUrl: "https://api.airtable.com/v0/",
+      apiUrl: "https://airtable.com/tbli6Uc4KkPQx8zB3/viwt6GKa68Wk76o7U?blocks=hide,
       apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
       base: "Students",
       records: []
