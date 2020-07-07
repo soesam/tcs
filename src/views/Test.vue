@@ -1,7 +1,7 @@
 <template>
   <div class="test">
     <h1>test page</h1>
-    <VueAirtable :columns="['Name', 'Sex', 'Points']"></vue-airtable>
+    <VueAirtable :columns="['Name', 'Sex', 'Points']"></VueAirtable>
     <Auth />
   </div>
 </template>
