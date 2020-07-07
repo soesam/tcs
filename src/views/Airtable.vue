@@ -35,11 +35,11 @@ export default {
   },
   mounted: function() {
     this.getData();
-    console.log("1")
+    console.log("1");
   },
   methods: {
     getData: function() {
-      console.log("2")
+      console.log("2");
       axios({
         url: this.apiUrl + this.base,
         headers: {
