@@ -1,19 +1,17 @@
 <template>
   <div class="test">
-    <h1>{{ message }}</h1>
+    <h1>test page</h1>
+    <Auth />
   </div>
 </template>
 
 <script>
-import * as firebaseui from "firebaseui";
-console.log(firebaseui);
+import Auth from "@/components/Auth.vue";
 
 export default {
   name: "Test",
-  data: function() {
-    return {
-      message: "test"
-    };
+  components: {
+    Auth
   }
 };
 </script>
