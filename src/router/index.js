@@ -1,23 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import 'firebase/auth';
+import "firebase/app";
+import "firebase/auth";
 import Test from "@/views/Test.vue";
-import Signin from '@/views/Signin.vue';
+import Signin from "@/views/Signin.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '*',
-    redirect: '/signin'
+    path: "*",
+    redirect: "/signin"
   },
   {
-    path: '/',
-    redirect: '/signin'
+    path: "/",
+    redirect: "/signin"
   },
   {
-    path: '/signin',
-    name: 'Signin',
+    path: "/signin",
+    name: "Signin",
     component: Signin
   },
   {
@@ -37,8 +38,8 @@ router.beforeEach((to, from, next) => {
   const user = firebase.auth().currentUser;
   const shouldAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (shouldAuth && !user) next('signin');
-  else if (!shouldAuth && user) next('home');
+  if (shouldAuth && !user) next("signin");
+  else if (!shouldAuth && user) next("home");
   else next();
 });
 
