@@ -9,7 +9,10 @@
     </thead>
     <tbody>
       <tr v-for="record in records" :key="record.id">
-        <td v-for="(col, colIndex) in columns" :key="record.id + '-' + colIndex">
+        <td
+          v-for="(col, colIndex) in columns"
+          :key="record.id + '-' + colIndex"
+        >
           {{ record.fields[col] }}
         </td>
       </tr>
@@ -18,34 +21,32 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-  name: 'VueAirtable',
-  props: [
-    'columns'
-  ],
-  data: function () {
+  name: "VueAirtable",
+  props: ["columns"],
+  data: function() {
     return {
-      apiUrl: 'https://api.airtable.com/v0/',
-      apiKey: 'keyLVnvjV4bFHXOaD', // Always use a read-only account token
-      base: 'Students',
+      apiUrl: "https://api.airtable.com/v0/",
+      apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
+      base: "Students",
       records: []
     };
   },
-  mounted: function () {
+  mounted: function() {
     this.getData();
   },
   methods: {
-    getData: function () {
+    getData: function() {
       axios({
         url: this.apiUrl + this.base,
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`
+          Authorization: `Bearer ${this.apiKey}`
         }
-      }).then((res) => {
+      }).then(res => {
         this.records = res.data.records;
       });
     }
   }
-}
+};
 </script>

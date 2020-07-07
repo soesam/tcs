@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import Auth from "@/components/Auth.vue";
-import VueAirtable from './Airtable.vue'
+ //import Auth from "@/components/Auth.vue";
+import VueAirtable from "./Airtable.vue";
 
 export default {
   name: "Test",
   components: {
-    Auth,
+    //Auth,
     Airtable
   }
 };
