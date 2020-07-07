@@ -20,7 +20,7 @@ export default {
   name: "Test",
   components: {
     Auth
-
+  },
     methods: {
       displayData() {
           base('Student').select({
@@ -59,5 +59,5 @@ export default {
       }
     }
   }
-};
+}
 </script>
