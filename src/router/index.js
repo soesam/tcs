@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-const firebase = require('firebase');
+const firebase = require("firebase");
 import Test from "@/views/Test.vue";
 import Signin from "@/views/Signin.vue";
 
