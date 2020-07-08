@@ -30,7 +30,7 @@ export default {
       apiUrl:
         'https://api.airtable.com',
       apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
-      base: "Students",
+      base: "/Students",
       records: []
     };
   },
