@@ -23,6 +23,7 @@
 
 <script>
 import axios from "axios";
+var Airtable = require('airtable');
 export default {
   name: "VueAirtable",
   props: ["columns"],
@@ -36,11 +37,13 @@ export default {
     };
   },
   mounted: function() {
-    var Airtable = require('airtable');
-    var base = new Airtable({apiKey: 'keyLVnvjV4bFHXOaD'}).base('appvLWxrF80mDK8Xq');
     this.getData();
   },
   methods: {
+    sleep: function(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    },
+    
     getData: function() {
       axios({
         url: this.apiUrl + this.base,
@@ -74,6 +77,7 @@ export default {
         }
         base('Student').find( key , fetch)
         await sleep(500)
+      },
+    },
   }
-};
 </script>
