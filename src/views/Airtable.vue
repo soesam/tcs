@@ -28,9 +28,9 @@ export default {
   data: function() {
     return {
       apiUrl:
-        'https://api.airtable.com',
+        'https://api.airtable.com/v0/appvLWxrF80mDK8Xq/',
       apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
-      base: "/Students",
+      base: "Student",
       records: []
     };
   },
