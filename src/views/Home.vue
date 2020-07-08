@@ -1,5 +1,3 @@
 <template>
-  <div class="home">
-    welcome
-  </div>
+  <v-btn color='blue'>hello</v-btn>
 </template>
