@@ -15,6 +15,7 @@
         >
           {{ record.fields[col] }}
         </td>
+        <v-btn color="green" text @click="pointUp(record.id)">+1</v-btn>
       </tr>
     </tbody>
   </table>
@@ -35,12 +36,12 @@ export default {
     };
   },
   mounted: function() {
+    var Airtable = require('airtable');
+    var base = new Airtable({apiKey: 'keyLVnvjV4bFHXOaD'}).base('appvLWxrF80mDK8Xq');
     this.getData();
-    console.log("1");
   },
   methods: {
     getData: function() {
-      console.log("2");
       axios({
         url: this.apiUrl + this.base,
         headers: {
@@ -49,7 +50,30 @@ export default {
       }).then(res => {
         this.records = res.data.records;
       });
-    }
+    },
+    pointUp: async function(key) {
+        var base = new Airtable({apiKey: 'keyLVnvjV4bFHXOaD'}).base('appvLWxrF80mDK8Xq');
+        var points = 0;
+        function fetch(err, record) {
+          if (err) { console.error(err); return; }
+          points = record.get('Points');
+          let inputElement = document.querySelector(`input.${key}`)
+          let addition = parseInt(inputElement.value)
+          var newPoints = points + addition;
+          console.log(points)
+          console.log(addition)
+          console.log(newPoints)
+          base('Student').update([
+          {
+            "id": key,
+            "fields": {
+              "Points": newPoints,
+            }
+          },
+          ])
+        }
+        base('Student').find( key , fetch)
+        await sleep(500)
   }
 };
 </script>
