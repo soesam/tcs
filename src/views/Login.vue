@@ -14,6 +14,7 @@ export default {
   methods: {
     submit() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user => {
+        this.$store.commit('hello', user)
         this.$router.replace('/home')
       })
     }
