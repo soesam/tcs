@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { auth } from '@/app'
+
 export default {
   data() {
     return {
@@ -57,8 +59,9 @@ export default {
 
   methods: {
     submit() {
-      // call firebase's createUserWithEmailAndPassword function.
-      // redirect to `/login` or maybe straight to `/home`.
+      auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
+        this.$router.replace('/login')
+      })
     }
   }
 };
