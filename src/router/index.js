@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import { auth } from './firebase';
 import Home from "@/views/Home.vue";
+import Lost from '@/views/Lost.vue';
 import Login from '@/components/Login.vue';
 import Signup from '@/components/Signup.vue';
 
@@ -25,9 +26,19 @@ const routes = [
     }
   },
   {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
     path: "/home",
     name: "home",
     component: Home
+  },
+  {
+    path: '*', 
+    name: 'lost',
+    component: Lost
   }
 ];
 
