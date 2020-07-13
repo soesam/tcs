@@ -3,8 +3,8 @@ import VueRouter from "vue-router";
 import { auth } from "./firebase";
 import Home from "@/views/Home.vue";
 import Lost from "@/views/Lost.vue";
-import Login from "@/components/Login.vue";
-import Signup from "@/components/Signup.vue";
+import Login from "@/views/Login.vue";
+import Signup from "@/views/Signup.vue";
 
 Vue.use(VueRouter);
 
