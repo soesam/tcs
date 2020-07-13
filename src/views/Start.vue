@@ -1,5 +1,5 @@
 <template>
-  <div class='start'>
+  <div class="start">
     the start page
   </div>
 </template>
