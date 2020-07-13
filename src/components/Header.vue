@@ -1,8 +1,6 @@
 <template>
-  <v-toolbar dark color="primary">
-
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title class="white--text">TCS</v-toolbar-title>
+  <v-app-bar dense>
+    <v-app-bar-title>Title</v-app-bar-title>
     <v-spacer></v-spacer>
 
     <v-btn icon>
@@ -10,15 +8,11 @@
     </v-btn>
 
     <v-btn icon>
-      <v-icon>apps</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>refresh</v-icon>
+      <v-icon>favorite</v-icon>
     </v-btn>
 
     <v-btn icon>
       <v-icon>more_vert</v-icon>
     </v-btn>
-  </v-toolbar>
+  </v-app-bar>
 </template>
