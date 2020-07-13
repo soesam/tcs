@@ -53,6 +53,13 @@ export default {
       email: "",
       password: ""
     };
+  },
+
+  methods: {
+    signup() {
+      // call firebase's createUserWithEmailAndPassword function.
+      // redirect to `/login` or maybe straight to `/home`.
+    }
   }
 };
 </script>
