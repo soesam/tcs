@@ -15,8 +15,15 @@
         >
           {{ record.fields[col] }}
         </td>
-        <button color="green" v-on:click="() => pointUp(record.id,1)">+1</button>
-        <button color="green" v-on:click="() => pointUp(record.id,5)">+5</button>
+        <button name="Green" v-on:click="() => pointUp(record.id, 1)">
+          +1
+        </button>
+        <button name="Green" v-on:click="() => pointUp(record.id, 5)">
+          +5
+        </button>
+        <button name="Red" v-on:click="() => deleteThis(record.id)">
+          +5
+        </button>
       </tr>
     </tbody>
   </table>
@@ -82,7 +89,27 @@ export default {
       await sleep(500);
 
       this.getData();
+    },
+
+    deleteThis: function(key) {
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+        "appvLWxrF80mDK8Xq"
+      );
+      console.log("Delete")
+      base("Student").destroy([ key ],
+      function(err, deletedRecords) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(deletedRecords)
+      })
     }
   }
 };
 </script>
+
+<style>
+  button[name="Green"] {background:green;}
+  buttom[name="Red"] {background:red;}
+</style>
