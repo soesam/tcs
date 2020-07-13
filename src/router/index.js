@@ -4,7 +4,7 @@ import { auth } from "./app";
 import Home from "@/views/Home.vue";
 import Lost from "@/views/Lost.vue";
 import Login from "@/views/Login.vue";
-import Signup from "@/views/Signup.vue";
+import Join from "@/views/Join.vue";
 
 Vue.use(VueRouter);
 
@@ -18,9 +18,9 @@ const routes = [
     }
   },
   {
-    path: "/signup",
-    name: "signup",
-    component: Signup,
+    path: "/join",
+    name: "join",
+    component: Join,
     meta: {
       hidden: false
     }
@@ -57,6 +57,6 @@ const guard = (to, from, next) => {
   else next();
 };
 
-router.beforeEach((...p) => guard(...p));
+router.beforeEach((...r) => guard(...r));
 
 export default router;
