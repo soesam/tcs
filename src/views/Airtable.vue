@@ -22,7 +22,7 @@
           +5
         </button>
         <button name="Red" v-on:click="() => deleteThis(record.id)">
-          +5
+          Delete
         </button>
       </tr>
     </tbody>
@@ -111,5 +111,5 @@ export default {
 
 <style>
   button[name="Green"] {background:green;}
-  buttom[name="Red"] {background:red;}
+  button[name="Red"] {background:red;}
 </style>
