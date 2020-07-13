@@ -5,7 +5,7 @@
         <v-card>
           <v-card-text>
             <v-container>
-              <form>
+              <form @submit.prevent='submit'>
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
@@ -56,7 +56,7 @@ export default {
   },
 
   methods: {
-    signup() {
+    submit() {
       // call firebase's createUserWithEmailAndPassword function.
       // redirect to `/login` or maybe straight to `/home`.
     }
