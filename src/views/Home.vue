@@ -1,21 +1,8 @@
 <template>
-  <v-btn large secondary light tile :click='authTest'>Sign in with Google</v-btn>
+  <div class='home'>
+    <h1 class='display-4'>Welcome</h1>
+    <h2 class='display-3'>Welcome</h1>
+    <h3 class='display-2'>Welcome</h1>
+    <h4 class='display-1'>Welcome</h1>
+  </div>
 </template>
-
-<script>
-import { db, auth } from '@/firebase'
-const ref = db.ref('')
-
-export default {
-  data: {
-    
-  }
-
-  methods: {
-    authTest() {
-      // trigger auth flow.
-     
-    } 
-  }
-}
-</script>
