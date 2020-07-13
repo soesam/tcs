@@ -1,18 +1,31 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Start from "@/views/Start.vue";
+import { auth } from './firebase';
 import Home from "@/views/Home.vue";
+import Login from '@/components/Login.vue';
+import Signup from '@/components/Signup.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/start",
-    name: "start",
-    component: Start
+    path: "/login",
+    name: "login",
+    component: Login,
+    meta: {
+      hidden: false
+    }
   },
   {
-    path: "/",
+    path: "/signup",
+    name: 'signup',
+    component: Signup,
+    meta: {
+      hidden: false
+    }
+  },
+  {
+    path: "/home",
     name: "home",
     component: Home
   }
@@ -24,10 +37,15 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.name !== "start" && !true /* TODO: firebase authentication check. */)
-    next({ name: "start" });
+const guard = (to, from, next) => {
+  let user = auth().currentUser
+  let hidden = to.matched.some(r => r.meta.hidden)
+
+  if (hidden && !user) next('login');
+  else if (!hidden && user) next('home');
   else next();
-});
+}
+
+router.beforeEach((...p) => guard(...p))
 
 export default router;
