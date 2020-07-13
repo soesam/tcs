@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dense>
+ <!-- <v-app-bar dense>
     <v-app-bar-title>Title</v-app-bar-title>
     <v-spacer></v-spacer>
 
@@ -14,5 +14,8 @@
     <v-btn icon>
       <v-icon>more_vert</v-icon>
     </v-btn>
-  </v-app-bar>
+  </v-app-bar> -->
+
+  <div class='header'>
+  </div>
 </template>

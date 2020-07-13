@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { auth } from './firebase';
+import { auth } from "./firebase";
 import Home from "@/views/Home.vue";
-import Lost from '@/views/Lost.vue';
-import Login from '@/components/Login.vue';
-import Signup from '@/components/Signup.vue';
+import Lost from "@/views/Lost.vue";
+import Login from "@/components/Login.vue";
+import Signup from "@/components/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -19,15 +19,15 @@ const routes = [
   },
   {
     path: "/signup",
-    name: 'signup',
+    name: "signup",
     component: Signup,
     meta: {
       hidden: false
     }
   },
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: Home
   },
   {
@@ -36,8 +36,8 @@ const routes = [
     component: Home
   },
   {
-    path: '*', 
-    name: 'lost',
+    path: "*",
+    name: "lost",
     component: Lost
   }
 ];
@@ -49,14 +49,14 @@ const router = new VueRouter({
 });
 
 const guard = (to, from, next) => {
-  let user = auth().currentUser
-  let hidden = to.matched.some(r => r.meta.hidden)
+  let user = auth().currentUser;
+  let hidden = to.matched.some(r => r.meta.hidden);
 
-  if (hidden && !user) next('login');
-  else if (!hidden && user) next('home');
+  if (hidden && !user) next("login");
+  else if (!hidden && user) next("home");
   else next();
-}
+};
 
-router.beforeEach((...p) => guard(...p))
+router.beforeEach((...p) => guard(...p));
 
 export default router;
