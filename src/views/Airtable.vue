@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import axios from "axios";
 var Airtable = require("airtable");
 const sleep = function(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -43,26 +42,15 @@ export default {
       apiUrl: "https://api.airtable.com/v0/appvLWxrF80mDK8Xq/",
       apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
       base: "Student",
-      records: []
+      records: [],
     };
   },
   mounted: function() {
-    this.getData();
+    this.records = this.checkData(this.getData(), "Year 11 GCSE PE");
   },
   methods: {
-    getData: function() {
-      axios({
-        url: this.apiUrl + this.base,
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`
-        }
-      }).then(res => {
-        this.records = res.data.records;
-      });
-    },
+    //Function used to add points to airtable
     pointUp: async function(key, no) {
-      console.log("1");
-      console.log(key);
       var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
@@ -74,8 +62,6 @@ export default {
         }
         points = record.get("Points");
         var newPoints = points + no;
-        console.log(points);
-        console.log(newPoints);
         base("Student").update([
           {
             id: key,
@@ -87,29 +73,94 @@ export default {
       }
       base("Student").find(key, fetch);
       await sleep(500);
-
-      this.getData();
+      this.records = this.checkData(this.getData(), "Year 11 GCSE PE");
     },
 
+    //Function used to delete a student's record
     deleteThis: function(key) {
       var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
-      console.log("Delete")
-      base("Student").destroy([ key ],
-      function(err, deletedRecords) {
+      base("Student").destroy([key], function(err) {
         if (err) {
           console.error(err);
           return;
         }
-        console.log(deletedRecords)
-      })
+        this.getData();
+      });
+    },
+    //Gives opposite of value put in (Boolean only)
+    change: function(value) {
+      value = !value;
+      return value;
+    },
+    //Gets data from airtable
+    getData: async function() {
+      var list = [];
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base("appvLWxrF80mDK8Xq");
+      base('Student').select({
+          view: "Grid view"
+      }).eachPage(function page(records, fetchNextPage) {
+          records.forEach(function(record) {
+                list.push(record)
+          });
+          fetchNextPage();
+      }, function done(err) {
+          if (err) { console.error(err); return; }
+          console.log(list)
+      });
+      await sleep(500);
+      console.log(list)
+      return list;
+    },
+
+    checkData: async function(data, classs) {
+      var list = [];
+      var list1 = [];
+      var studentList;
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base("appvLWxrF80mDK8Xq");
+      base('Class').select({
+          view: "Grid view"
+      }).eachPage(function page(records, fetchNextPage) {
+          records.forEach(function(record) {
+              list.push(record)
+          });
+          fetchNextPage();
+      }, function done(err) {
+          if (err) { console.error(err); return; }
+      });
+      await sleep(500);
+      if (classs != "All") {
+          var i;
+          var t;
+          for (i = 0; i<list.length; i++) {
+            if (classs == list[i].fields.Name) {
+              studentList = list[i].fields.Members;
+            }
+          }
+          await sleep(1000);
+          console.log(data)
+          for (i = 0; i<studentList.length; i++) {
+            for (t = 0; t<data.length; t++) {
+              if (data[t].id == studentList[i]) {
+                list1.push(data[t]);
+              }
+            }
+          }
+        }
+        await sleep(500);
+        console.log("list1")
+      console.log(list1)
+      return list1
     }
   }
 };
 </script>
-
 <style>
-  button[name="Green"] {background:green;}
-  button[name="Red"] {background:red;}
+button[name="Green"] {
+  background: green;
+}
+button[name="Red"] {
+  background: red;
+}
 </style>
