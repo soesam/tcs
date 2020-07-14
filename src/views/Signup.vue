@@ -1,13 +1,13 @@
 <template>
-  <Guard kind='sign-in'/>
+  <Guard kind="sign-in" />
 </template>
 
 <script>
-import Guard from '@/components/Guard.vue'
+import Guard from "@/components/Guard.vue";
 
 export default {
   components: {
-    Portal
+    Guard
   }
-}
+};
 </script>
