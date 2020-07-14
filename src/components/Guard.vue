@@ -1,29 +1,21 @@
 <template>
   <v-container>
-    <v-layout>
-      <v-flex justify-center align-center>
+    <v-layout justify-content-center align-content-center>
+      <v-flex xs12 sm6 offset-sm3>
         <v-card>
-
           <v-card-title>
-            <h2>{{ kind === 'signin' ? 'Sign in to TCS' : 'Create your account'}}</h2>
+            <h3>
+              {{ kind === "signin" ? "Sign in" : "Create your account" }}
+            </h3>
           </v-card-title>
 
           <v-card-text>
-            <v-form @submit.prevent="send">
-
-              <v-text-field
-                label='Your email' 
-                v-model='email'
-              >
-              </v-text-field>
-
-              <v-text-feild 
-                label='Password' 
-                v-model='password'
-              >
-              </v-text-field>
-
-              <v-btn flat>Create</v-btn>
+            <v-form @submit.prevent="submit">
+              <v-text-field v-model='email' label='Email'></v-text-field>
+              <v-text-field v-model='password' label='Password'></v-text-field>
+              <v-flex xs12>
+                <v-btn color='primary' tile type="submit">{{ kind === 'signin' ? 'Sign in': 'Create account'</v-btn>
+              </v-flex>
             </v-form>
           </v-card-text>
         </v-card>
@@ -35,12 +27,26 @@
 <script>
 export default {
   props: ["kind"],
-  data: {
-    email: '',
-    password: ''
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
   },
-  send() {
-    console.log('form submit fired')
+  methods: {
+    submit() {
+      if (props.kind === 'signin') {
+        auth.signInWithEmailAndPassword(this.email, this.password).then(resp => {
+          console.log('response from sign in')
+          console.log(resp)
+        })
+      } else if (props.kind === 'signup') {
+        auth.createUserWithEmailAndPassword(this.email, this.password).then(resp => {
+          console.log('response from sign up')
+          console.log(resp)
+        })
+      }
+    }
   }
 };
 </script>
