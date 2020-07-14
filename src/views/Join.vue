@@ -5,7 +5,7 @@
         <v-card>
           <v-card-text>
             <v-container>
-              <form @submit.prevent='submit'>
+              <form @submit.prevent="submit">
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { auth } from '@/app'
+import { auth } from "@/app";
 
 export default {
   data() {
@@ -59,9 +59,11 @@ export default {
 
   methods: {
     submit() {
-      auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
-        this.$router.replace('/login')
-      })
+      auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.replace("/login");
+        });
     }
   }
 };

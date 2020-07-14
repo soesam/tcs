@@ -5,7 +5,7 @@
         <v-card>
           <v-card-text>
             <v-container>
-              <form @submit.prevent='submit'>
+              <form @submit.prevent="submit">
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
@@ -47,23 +47,25 @@
 </template>
 
 <script>
-import { auth } from '@/app'
+import { auth } from "@/app";
 
 export default {
   data() {
-    return  {
-      email: '',
-      password: ''
-    }
+    return {
+      email: "",
+      password: ""
+    };
   },
-  
+
   methods: {
     submit() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user => {
-        this.$store.commit('hello', user)
-        this.$router.replace('/home')
-      })
+      auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(user => {
+          this.$store.commit("hello", user);
+          this.$router.replace("/home");
+        });
     }
   }
-}
+};
 </script>

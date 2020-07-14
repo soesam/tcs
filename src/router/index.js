@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { auth } from "./app";
+import { auth } from "@/app";
 import Home from "@/views/Home.vue";
 import Lost from "@/views/Lost.vue";
 import Login from "@/views/Login.vue";
