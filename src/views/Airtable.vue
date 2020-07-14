@@ -42,11 +42,11 @@ export default {
       apiUrl: "https://api.airtable.com/v0/appvLWxrF80mDK8Xq/",
       apiKey: "keyLVnvjV4bFHXOaD", // Always use a read-only account token
       base: "Student",
-      records: [],
+      records: []
     };
   },
   mounted: function() {
-    this.records = this.checkData(this.getData(), "Year 11 GCSE PE");
+    this.records = this.getData();
   },
   methods: {
     //Function used to add points to airtable
@@ -71,9 +71,9 @@ export default {
           }
         ]);
       }
-      base("Student").find(key, fetch);
       await sleep(500);
-      this.records = this.checkData(this.getData(), "Year 11 GCSE PE");
+      base("Student").find(key, fetch);
+      this.records = this.getData();
     },
 
     //Function used to delete a student's record
@@ -95,63 +95,76 @@ export default {
       return value;
     },
     //Gets data from airtable
-    getData: async function() {
+    getData: function() {
       var list = [];
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base("appvLWxrF80mDK8Xq");
-      base('Student').select({
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+        "appvLWxrF80mDK8Xq"
+      );
+      base("Student")
+        .select({
           view: "Grid view"
-      }).eachPage(function page(records, fetchNextPage) {
-          records.forEach(function(record) {
-                list.push(record)
-          });
-          fetchNextPage();
-      }, function done(err) {
-          if (err) { console.error(err); return; }
-          console.log(list)
-      });
-      await sleep(500);
-      console.log(list)
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(function(record) {
+              list.push(record);
+            });
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+          }
+        );
       return list;
     },
 
-    checkData: async function(data, classs) {
+    checkData: function(data, classs) {
       var list = [];
       var list1 = [];
       var studentList;
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base("appvLWxrF80mDK8Xq");
-      base('Class').select({
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+        "appvLWxrF80mDK8Xq"
+      );
+      base("Class")
+        .select({
           view: "Grid view"
-      }).eachPage(function page(records, fetchNextPage) {
-          records.forEach(function(record) {
-              list.push(record)
-          });
-          fetchNextPage();
-      }, function done(err) {
-          if (err) { console.error(err); return; }
-      });
-      await sleep(500);
-      if (classs != "All") {
-          var i;
-          var t;
-          for (i = 0; i<list.length; i++) {
-            if (classs == list[i].fields.Name) {
-              studentList = list[i].fields.Members;
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(function(record) {
+              list.push(record);
+            });
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
             }
           }
-          await sleep(1000);
-          console.log(data)
-          for (i = 0; i<studentList.length; i++) {
-            for (t = 0; t<data.length; t++) {
-              if (data[t].id == studentList[i]) {
-                list1.push(data[t]);
-              }
+        );
+      if (classs != "All") {
+        var i;
+        var t;
+        for (i = 0; i < list.length; i++) {
+          if (classs == list[i].fields.Name) {
+            studentList = list[i].fields.Members;
+          }
+        }
+        for (i = 0; i < studentList.length; i++) {
+          for (t = 0; t < data.length; t++) {
+            if (data[t].id == studentList[i]) {
+              list1.push(data[t]);
             }
           }
         }
-        await sleep(500);
-        console.log("list1")
-      console.log(list1)
-      return list1
+      }
+      console.log("list1");
+      console.log(list1);
+      return list1;
     }
   }
 };
