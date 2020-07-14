@@ -5,6 +5,7 @@ import Home from "@/views/Home.vue";
 import Lost from "@/views/Lost.vue";
 import Login from "@/views/Login.vue";
 import Join from "@/views/Join.vue";
+import Classes from "@/views/Classes.vue"
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,14 @@ const routes = [
     path: "/join",
     name: "join",
     component: Join,
+    meta: {
+      hidden: false
+    }
+  },
+  {
+    path: "/classes",
+    name: "classes",
+    component: Classes,
     meta: {
       hidden: false
     }
