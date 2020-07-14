@@ -11,10 +11,16 @@
 
           <v-card-text>
             <v-form @submit.prevent="submit">
-              <v-text-field v-model='email' label='Email'></v-text-field>
-              <v-text-field v-model='password' label='Password'></v-text-field>
+              <v-text-field v-model="email" label="Email"></v-text-field>
+              <v-text-field
+                type="password"
+                v-model="password"
+                label="Password"
+              ></v-text-field>
               <v-flex xs12>
-                <v-btn color='primary' tile type="submit">{{ kind === 'signin' ? 'Sign in': 'Create account'</v-btn>
+                <v-btn color="primary" tile type="submit">
+                  {{ kind === "signin" ? "Sign in" : "Create account" }}
+                </v-btn>
               </v-flex>
             </v-form>
           </v-card-text>
@@ -25,6 +31,8 @@
 </template>
 
 <script>
+import { auth } from "@/db";
+
 export default {
   props: ["kind"],
   data() {
@@ -35,16 +43,21 @@ export default {
   },
   methods: {
     submit() {
-      if (props.kind === 'signin') {
-        auth.signInWithEmailAndPassword(this.email, this.password).then(resp => {
-          console.log('response from sign in')
-          console.log(resp)
-        })
-      } else if (props.kind === 'signup') {
-        auth.createUserWithEmailAndPassword(this.email, this.password).then(resp => {
-          console.log('response from sign up')
-          console.log(resp)
-        })
+      if (this.kind === "signin") {
+        auth
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(resp => {
+            console.log("response from sign in");
+            console.log(resp);
+          });
+      } else if (this.kind === "signup") {
+        auth
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(resp => {
+            console.log("response from sign up");
+            console.log(resp);
+          });
+        this.$router.replace("/home");
       }
     }
   }
