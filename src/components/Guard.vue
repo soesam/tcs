@@ -11,12 +11,17 @@
 
           <v-card-text>
             <v-form @submit.prevent="submit">
+
               <v-text-field v-model="email" label="Email"></v-text-field>
+              <v-spacer></v-spacer>
+
               <v-text-field
                 type="password"
                 v-model="password"
                 label="Password"
               ></v-text-field>
+              <v-spacer></v-spacer>
+             
               <v-flex xs12>
                 <v-btn color="primary" tile type="submit">
                   {{ kind === "signin" ? "Sign in" : "Create account" }}
