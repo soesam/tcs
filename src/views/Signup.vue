@@ -1,5 +1,5 @@
 <template>
-  <Guard kind="sign-in" />
+  <Guard kind="signup" />
 </template>
 
 <script>
