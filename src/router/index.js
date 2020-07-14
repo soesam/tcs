@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
+import Classes from '@/views/Classes.vue';
 import Signin from "@/views/Signin.vue";
 import Signup from "@/views/Signup.vue";
+
 import { auth } from "@/db";
 
 Vue.use(VueRouter);
@@ -31,6 +33,11 @@ const routes = [
     meta: {
       surface: true
     }
+  },
+  {
+    path: "/classes",
+    name: "classes",
+    component: Classes
   }
 ];
 
