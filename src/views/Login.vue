@@ -51,8 +51,10 @@ import { auth } from '@/app'
 
 export default {
   data() {
-    email: '',
-    password: ''
+    return  {
+      email: '',
+      password: ''
+    }
   },
   
   methods: {
