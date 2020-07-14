@@ -1,33 +1,56 @@
 <template>
   <div>
-    <Card title="Test" list="this.records"></Card>
+    <v-card v-for="(title, tIndex) in titles" :key="tIndex">
+      <v-card-title> {{ title }} </v-card-title>
+      <br/>
+      <v-card-subtitle>Students:</v-card-subtitle>
+      <br/>
+      <v-card-text v-for="(c, cIndex) in classes[tIndex]" :key="cIndex">{{c + ", "}}</v-card-text>
+      <br/>
+      <br/>
+      <br/>
+    </v-card>
   </div>
 </template>
 
 <script>
-  import Card from "@/components/Card.vue"
   var Airtable = require("airtable");
   const sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   };
   export default {
+    name: "Classes",
     data() {
       return {
         apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
         apiKey: "keyLVnvjV4bFHX0aD",
-        records: []
+        records: [],
+        classes: [],
+        titles: []
       };
     },
 
-    mounted: function() {
-      this.getData()
-    },
-
-    components: {
-      Card
+    mounted: async function() {
+      this.showData()
     },
 
     methods: {
+
+    showData: async function() {
+      this.records = this.getData()
+      await sleep(500);
+      var i;
+      var l;
+      let students = this.records[0];
+      let cls = this.records[1];
+      for (i=0; i < cls.length; i++) {
+        l = this.checkData(students, cls[i]);
+        console.log("6")
+        console.log(l)
+        this.titles.push(cls[i].fields.Name)
+        this.classes.push(l);
+      }
+    },
     //Function used to add points to airtable
     pointUp: async function(key, no) {
       var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
@@ -52,7 +75,7 @@
       }
       await sleep(500);
       base("Student").find(key, fetch);
-      this.records = this.getData();
+      this.showData();
     },
 
     //Function used to delete a student's record
@@ -65,7 +88,7 @@
           console.error(err);
           return;
         }
-        this.getData();
+        this.showData();
       });
     },
 
@@ -78,6 +101,8 @@
     //Gets data from airtable
     getData: function() {
       var list = [];
+      var list1 = [];
+      var allList = [];
       var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
@@ -99,48 +124,49 @@
             }
           }
         );
-      return list;
+        base("Class")
+          .select({
+            view: "Grid view"
+          })
+          .eachPage(
+            function page(records, fetchNextPage) {
+              records.forEach(function(record) {
+                list1.push(record);
+              });
+              fetchNextPage();
+            },
+            function done(err) {
+              if (err) {
+                console.error(err);
+                return;
+              }
+            }
+          );
+          allList.push(list);
+          allList.push(list1);
+          return allList;
     },
 
     checkData: function(data, classs) {
-      var list = [];
-      var list1 = [];
-      var studentList;
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
-        "appvLWxrF80mDK8Xq"
-      );
-      base("Class")
-        .select({
-          view: "Grid view"
-        })
-        .eachPage(
-          function page(records, fetchNextPage) {
-            records.forEach(function(record) {
-              list.push(record);
-            });
-            fetchNextPage();
-          },
-          function done(err) {
-            if (err) {
-              console.error(err);
-              return;
+      var studentList = [];
+      var studentList1 = [];
+      var i;
+      var t;
+      var l;
+      studentList = classs.fields.Members;
+      for (i = 0; i < studentList.length; i++) {
+        for (t = 0; t < data.length; t++) {
+          if (data[t].fields.Member[0] == studentList[i]) {
+            console.log("4")
+            l = data[t].fields.Name + " " + data[t].fields.Surname;
+            console.log(l)
+            studentList1.push(l);
+              }
             }
           }
-        );
-      if (classs != "All") {
-        var i;
-        var t;
-        for (i = 0; i < list.length; i++) {
-          if (classs == list[i].fields.Name) {
-            studentList = list[i].fields.Members;
-          }
-        }
-        for (i = 0; i < studentList.length; i++) {
-          for (t = 0; t < data.length; t++) {
-            if (data[t].id == studentList[i]) {
-                  list1.push(data[t]);
-                }}}}
-          return list1;
+          console.log("5")
+          console.log(studentList1)
+          return studentList1;
         }
       }
     };
