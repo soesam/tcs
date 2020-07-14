@@ -10,12 +10,11 @@ import { auth } from "@/db";
 const email = "test2@gmail.com";
 const password = "abcd1234";
 
-console.log(`info: imported auth object is ${firebase.auth}`);
+console.log(`info: imported auth object is ${auth}`);
 
 console.log(`info: creating a new user ${email}|${password}`);
 
-firebase
-  .auth()
+auth
   .createUserWithEmailAndPassword(email, password)
   .then(result => {
     console.log(`info: result of createUserWithEmailAndPassword wa:`);

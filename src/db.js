@@ -15,7 +15,7 @@ const app = firebase.initializeApp({
 });
 
 export const db = app.firestore();
-export const auth = app.auth;
+export const auth = app.auth();
 
 // Export types that exists in Firestore - Uncomment if you need them in your app
 // const { Timestamp, GeoPoint } = firebase.firestore
