@@ -2,8 +2,8 @@
 
 import firebase from "firebase/app";
 import "firebase/firestore";
-import "firebase/auth"
-const app = firebase.initializeApp({ projectId: "tcs-io" })
+import "firebase/auth";
+const app = firebase.initializeApp({ projectId: "tcs-io" });
 export const db = app.firestore();
 export const auth = app.auth;
 
