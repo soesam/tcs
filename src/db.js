@@ -2,8 +2,10 @@
 
 import firebase from "firebase/app";
 import "firebase/firestore";
-
-export const db = firebase.initializeApp({ projectId: "tcs-io" }).firestore();
+import "firebase/auth"
+const app = firebase.initializeApp({ projectId: "tcs-io" })
+export const db = app.firestore();
+export const auth = app.auth;
 
 // Export types that exists in Firestore - Uncomment if you need them in your app
 // const { Timestamp, GeoPoint } = firebase.firestore
