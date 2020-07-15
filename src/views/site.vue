@@ -9,34 +9,36 @@
 
     <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
       <v-list dense class="grey lighten-4">
-        <template v-for="(item, i) in items">
-          <v-row v-if="item.heading" :key="i" align="center">
-            <v-col cols="6">
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-col>
-            <v-col cols="6" class="text-right">
-              <v-btn small text>edit</v-btn>
-            </v-col>
-          </v-row>
-          <v-divider
-            v-else-if="item.divider"
-            :key="i"
-            dark
-            class="my-4"
-          ></v-divider>
-          <v-list-item v-else :key="i" link>
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.text }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
+        <v-list-item :key="1" link>
+          <v-list-item-action>
+            <v-icon>event</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              homework
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item :key="2" link>
+          <v-list-item-action>
+            <v-icon>mdi-account-circle</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              profile
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item :key="3" link>
+          <v-list-item-action>
+            <v-icon>fas fa-list</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>classes </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -47,10 +49,10 @@
             <v-tooltip right>
               <template v-slot:activator="{ on }">
                 <v-btn :href="source" icon large target="_blank" v-on="on">
-                  <v-icon large>mdi-code-tags</v-icon>
+                  <v-icon large>mdi-account-circle</v-icon>
                 </v-btn>
               </template>
-              <span>Source</span>
+              <span>You don't have any homework due!</span>
             </v-tooltip>
           </v-col>
         </v-row>
@@ -58,19 +60,3 @@
     </v-main>
   </v-app>
 </template>
-
-<script>
-export default {
-  props: {
-    source: String
-  },
-  data: () => ({
-    drawer: null,
-    items: [
-      { icon: "event", text: "Homework" },
-      { icon: "account_circle", text: "Profile" },
-      { icon: 'class', text: 'Classes' }
-    ]
-  })
-};
-</script>
