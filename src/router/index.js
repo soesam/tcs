@@ -5,7 +5,7 @@ import Home from "@/views/Home.vue";
 import Lost from "@/views/Lost.vue";
 import Login from "@/views/Login.vue";
 import Join from "@/views/Join.vue";
-import Classes from "@/views/Classes.vue"
+import Classes2 from "@/views/Classes2.vue"
 
 Vue.use(VueRouter);
 
@@ -29,7 +29,7 @@ const routes = [
   {
     path: "/classes",
     name: "classes",
-    component: Classes,
+    component: Classes2,
     meta: {
       hidden: false
     }
