@@ -1,15 +1,18 @@
 <template>
-  </div></div>
+  <div></div>
 </template>
 
 <script>
-import fb from '@/fb';
 
-const provider = fb.auth.GoogleAuthProvider();
-fb.auth().languageCode = 'en';
+import { firebase } from "@/fb";
 
-fb.auth().signInWithRedirect(provider);
-fb.auth().getRedirectResult().then(result => {
-  console.log(result)
-});
+const provider = new firebase.auth.GoogleAuthProvider();
+firebase.auth().languageCode = "en";
+
+firebase.auth().signInWithRedirect(provider);
+firebase.auth()
+  .getRedirectResult()
+  .then(result => {
+    console.log(result);
+  });
 </script>

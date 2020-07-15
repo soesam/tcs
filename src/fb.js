@@ -2,7 +2,9 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-export default firebase.initializeApp({
+export const firebase;
+
+export const app = firebase.initializeApp({
   apiKey: "AIzaSyAsALZcYhNHg60vb7yv2GCw1vrA3keAtIw",
   authDomain: "tcs-io.firebaseapp.com",
   databaseURL: "https://tcs-io.firebaseio.com",
