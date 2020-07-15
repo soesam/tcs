@@ -3,7 +3,7 @@
     <v-card>
       <v-card-subtitle>Students:</v-card-subtitle>
       <br/>
-      <v-card-text v-for="(student, studentIndex) in students" :key="studentIndex">{{c + ", "}}</v-card-text>
+      <v-card-text v-for="(student, studentIndex) in students" :key="studentIndex">{{student.name + ",   "}}</v-card-text>
       <br/>
       <br/>
       <br/>
@@ -25,30 +25,29 @@
     },
 
     mounted: async function() {
+        this.getData();
+        await sleep(500)
     },
 
     methods: {
-      getData: async function() {
+      getData: function() {
         var v;
+        var name;
         database.collection('students').onSnapshot(res => {
           const changes = res.docChanges();
             changes.forEach(change => {
               if (change.type === 'added') {
                 v = change.doc.data();
+                name = v.Name
                 this.students.push({
-                  v,
-                  id: change.doc.id
+                  name,
                 })
               }
             })
           });
-        await sleep(500)
+        console.log("Here");
         console.log(this.students);
         }
       },
-
-    created() {
-      this.getData();
-    }
   }
 </script>
