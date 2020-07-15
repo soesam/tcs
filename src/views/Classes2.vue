@@ -12,10 +12,10 @@
 </template>
 
 <script>
-  import database from '@/firebase.js'
-  const sleep = function(ms) {
+  import database from '@/firebase'
+/*  const sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  };
+  }; */
   export default {
     name: "Classes2",
     data() {
