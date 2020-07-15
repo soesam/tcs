@@ -13,9 +13,9 @@
 
 <script>
   import database from '@/firebase'
-/*  const sleep = function(ms) {
+  const sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }; */
+  };
   export default {
     name: "Classes2",
     data() {
@@ -28,21 +28,27 @@
     },
 
     methods: {
-    },
+      getData: async function() {
+        var v;
+        database.collection('students').onSnapshot(res => {
+          const changes = res.docChanges();
+            changes.forEach(change => {
+              if (change.type === 'added') {
+                v = change.doc.data();
+                this.students.push({
+                  v,
+                  id: change.doc.id
+                })
+              }
+            })
+          });
+        await sleep(500)
+        console.log(this.students);
+        }
+      },
 
     created() {
-      database.collection('students').onSnapshot(res => {
-        const changes = res.docChanges();
-
-        changes.forEach(change => {
-          if (change.type === 'added') {
-            this.projects.push({
-              ...change.doc.data(),
-              id: change.doc.id
-            })
-          }
-        })
-      })
+      this.getData();
     }
   }
 </script>
