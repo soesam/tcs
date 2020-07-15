@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { add } from '@/views/user';
-import { login } '@/views/user';
-import site from '@/views/site.vue';
+import site from "@/views/site.vue";
 
 Vue.use(VueRouter);
 
@@ -11,16 +9,6 @@ const routes = [
     path: "/",
     name: "site",
     component: site
-  },
-  {
-    path: '/add',
-    name: 'add',
-    component: add
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
   }
 ];
 
