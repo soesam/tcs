@@ -1,42 +1,27 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "@/views/Home.vue";
-import Classes from "@/views/Classes.vue";
-import Signin from "@/views/Signin.vue";
-import Signup from "@/views/Signup.vue";
 import { auth } from "@/db";
+import { add } from '@/views/user.vue';
+import { login } '@/views/user.vue';
+import site from '@/views/site.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home,
-    meta: {
-      surface: true
-    }
+    name: "site",
+    component: site
   },
   {
-    path: "/signin",
-    name: "signin",
-    component: Signin,
-    meta: {
-      surface: true
-    }
+    path: '/add',
+    name: 'add',
+    component: add
   },
   {
-    path: "/signup",
-    name: "signup",
-    component: Signup,
-    meta: {
-      surface: true
-    }
-  },
-  {
-    path: "/classes",
-    name: "classes",
-    component: Classes
+    path: '/login',
+    name: 'login',
+    component: login
   }
 ];
 
@@ -45,16 +30,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
-
-const guard = (to, from, next) => {
-  let hidden = !to.matched.some(r => r.meta.surface);
-  let user = auth.currentUser;
-
-  if (hidden && !user) next("signin");
-  else if (!hidden && user) next("home");
-  else next();
-};
-
-router.beforeEach(guard);
 
 export default router;
