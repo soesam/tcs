@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const env = functions.config();
 
-  var Airtable = require("airtable");
+/*var Airtable = require("airtable");
 
   var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
     "appvLWxrF80mDK8Xq"
@@ -14,3 +14,4 @@ const env = functions.config();
 
       return base('Students').create(data)
     });
+*/

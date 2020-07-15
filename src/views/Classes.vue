@@ -23,7 +23,7 @@
     data() {
       return {
         apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
-        apiKey: "keyLVnvjV4bFHX0aD",
+        apiKey: "",
         records: [],
         classes: [],
         titles: []
@@ -65,7 +65,7 @@
     },
     teacherData: function() {
       var list = [];
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+      var base = new Airtable({ apiKey: "" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Staff")
@@ -91,7 +91,7 @@
 
     //Function used to add points to airtable
     pointUp: async function(key, no) {
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+      var base = new Airtable({ apiKey: "" }).base(
         "appvLWxrF80mDK8Xq"
       );
       var points = 0;
@@ -118,7 +118,7 @@
 
     //Function used to delete a student's record
     deleteThis: function(key) {
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+      var base = new Airtable({ apiKey: "" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Student").destroy([key], function(err) {
@@ -141,7 +141,7 @@
       var list = [];
       var list1 = [];
       var allList = [];
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+      var base = new Airtable({ apiKey: "" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Student")
