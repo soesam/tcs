@@ -1,5 +1,5 @@
 import Vue from "vue";
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import app from "./app.vue";
 import "./worker";
 import router from "./router";
@@ -14,7 +14,7 @@ firebase.initializeApp({
   authDomain: "tcs-io.firebaseapp.com",
   databaseURL: "https://tcs-io.firebaseio.com",
   projectId: "tcs-io"
-})
+});
 
 new Vue({
   router,
