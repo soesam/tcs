@@ -45,8 +45,6 @@
               }
             })
           });
-        console.log("Here");
-        console.log(this.students);
         }
       },
   }
