@@ -1,5 +1,5 @@
 import Vue from "vue";
-import $app from "./app.vue";
+import app from "./app.vue";
 import "./worker";
 import router from "./router";
 import store from "./store";
@@ -8,11 +8,9 @@ import { firestorePlugin } from "vuefire";
 
 Vue.use(firestorePlugin);
 
-Vue.config.productionTip = false;
-
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h($app)
+  render: h => h(aapp)
 }).$mount("#app");
