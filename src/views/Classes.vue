@@ -31,26 +31,64 @@
     },
 
     mounted: async function() {
-      this.showData()
+      var v;
+      v = this.teacherData()
+      this.showData(v)
     },
 
     methods: {
 
-    showData: async function() {
+    showData: async function(teacher) {
       this.records = this.getData()
       await sleep(500);
       var i;
       var l;
+      var t;
+      var cls = [];
       let students = this.records[0];
-      let cls = this.records[1];
+      let clas = this.records[1];
+      for (i=0; i < clas.length; i++) {
+        for (t=0; t < teacher.length; t++) {
+
+          console.log(clas[i].fields.tid[0]);
+          console.log(teacher[t].id);
+          if (clas[i].fields.tid[0] === teacher[t].id) {
+            cls.push(clas[i]);
+          }
+        }
+      }
       for (i=0; i < cls.length; i++) {
         l = this.checkData(students, cls[i]);
-        console.log("6")
-        console.log(l)
         this.titles.push(cls[i].fields.Name)
         this.classes.push(l);
       }
     },
+    teacherData: function() {
+      var list = [];
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
+        "appvLWxrF80mDK8Xq"
+      );
+      base("Staff")
+        .select({
+          view: "Grid view"
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(function(record) {
+              list.push(record);
+            });
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+          }
+        );
+        return list;
+    },
+
     //Function used to add points to airtable
     pointUp: async function(key, no) {
       var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
@@ -157,15 +195,11 @@
       for (i = 0; i < studentList.length; i++) {
         for (t = 0; t < data.length; t++) {
           if (data[t].fields.Member[0] == studentList[i]) {
-            console.log("4")
             l = data[t].fields.Name + " " + data[t].fields.Surname;
-            console.log(l)
             studentList1.push(l);
               }
             }
           }
-          console.log("5")
-          console.log(studentList1)
           return studentList1;
         }
       }
