@@ -28,7 +28,7 @@
           ></v-divider>
           <v-list-item v-else :key="i" link>
             <v-list-item-action>
-              <!--<v-icon>{{ item.icon }}</v-icon>-->
+              <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
@@ -67,8 +67,9 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: "lightbulb_outline", text: "Homework" },
-      { icon: "touch_app", text: "Profile" }
+      { icon: "event", text: "Homework" },
+      { icon: "account_circle", text: "Profile" },
+      { icon: 'class', text: 'Classes' }
     ]
   })
 };
