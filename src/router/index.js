@@ -18,4 +18,8 @@ const router = new VueRouter({
   routes
 });
 
+// TODO: hook before each. If the user is a student grant access to routes starting with student/. If a teacher,
+// grant access to those starting with teacher/. Else, if the user is logged in grant access to those under shared/.
+// otherwise, grant access only to site.vue. 
+
 export default router;
