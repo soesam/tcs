@@ -1,3 +1,6 @@
+import Vuetify from 'vuetify'
+import Vue from "vue";
+
 <template>
   <div>
     <v-card v-for="(title, tIndex) in titles" :key="tIndex">
@@ -23,7 +26,7 @@
     data() {
       return {
         apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
-        apiKey: "",
+        apiKey: "keyLVnvjV4bFHXOaD",
         records: [],
         classes: [],
         titles: []
@@ -50,8 +53,6 @@
       for (i=0; i < clas.length; i++) {
         for (t=0; t < teacher.length; t++) {
 
-          console.log(clas[i].fields.tid[0]);
-          console.log(teacher[t].id);
           if (clas[i].fields.tid[0] === teacher[t].id) {
             cls.push(clas[i]);
           }
@@ -65,7 +66,7 @@
     },
     teacherData: function() {
       var list = [];
-      var base = new Airtable({ apiKey: "" }).base(
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Staff")
@@ -91,7 +92,7 @@
 
     //Function used to add points to airtable
     pointUp: async function(key, no) {
-      var base = new Airtable({ apiKey: "" }).base(
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
       var points = 0;
@@ -118,7 +119,7 @@
 
     //Function used to delete a student's record
     deleteThis: function(key) {
-      var base = new Airtable({ apiKey: "" }).base(
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Student").destroy([key], function(err) {
@@ -141,7 +142,7 @@
       var list = [];
       var list1 = [];
       var allList = [];
-      var base = new Airtable({ apiKey: "" }).base(
+      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
         "appvLWxrF80mDK8Xq"
       );
       base("Student")

@@ -6,11 +6,21 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer app> </v-footer>
+    <v-footer></v-footer>
   </v-app>
 </template>
 
 <script>
-import Header from "@/components/Header";
-export default { components: { Header } };
+  import Header from "@/components/Header";
+  export default {
+    name: 'App',
+
+    components: { Header },
+
+    data () {
+      return {
+        //
+      }
+    }
+  };
 </script>
