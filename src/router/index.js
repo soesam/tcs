@@ -1,9 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import site from "@/views/site.vue";
-import Classes from "@/views/Classes.vue";
-// tests
-
+import home from "@/views/index.vue";
 import student from "@/views/student/index.vue";
 
 Vue.use(VueRouter);
@@ -11,11 +8,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "site",
-    component: site
+    name: "home",
+    component: home
   },
   {
-    path: "/tmp-student",
+    path: "/student",
     name: "student",
     component: student
   }
