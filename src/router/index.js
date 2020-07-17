@@ -4,12 +4,7 @@ import site from "@/views/site.vue";
 import Classes from "@/views/Classes.vue"
 // tests
 
-<<<<<<< HEAD
-import student from '@/views/student/index.vue';
-
-=======
 import student from "@/views/student/index.vue";
->>>>>>> 9b37370c9088a59caf649ba4f449c3a82da18d9c
 
 Vue.use(VueRouter);
 
