@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Vuetify from 'vuetify'
 import Vue from "vue";
 
