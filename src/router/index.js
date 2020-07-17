@@ -2,6 +2,11 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import site from "@/views/site.vue";
 
+// tests
+
+import student from '@/views/student/index.vue';:Wq
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -9,6 +14,11 @@ const routes = [
     path: "/",
     name: "site",
     component: site
+  },
+  {
+    path: '/tmp-student',
+    name: 'student',
+    component: student
   }
 ];
 
