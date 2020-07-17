@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 {
   "projects": {
     "default": "tcs-a63b1"
   }
 }
+=======
+{
+  "projects": {
+    "default": "tcs-io"
+  }
+}
+>>>>>>> stable
