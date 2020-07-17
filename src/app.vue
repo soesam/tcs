@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class='gray lighten-4'>
     <v-main>
       <v-container fluid>
         <router-view></router-view>
