@@ -1,49 +1,46 @@
-<<<<<<< HEAD
-import Vuetify from 'vuetify'
-import Vue from "vue";
-
 <template>
   <div>
     <v-card v-for="(title, tIndex) in titles" :key="tIndex">
       <v-card-title> {{ title }} </v-card-title>
-      <br/>
+      <br />
       <v-card-subtitle>Students:</v-card-subtitle>
-      <br/>
-      <v-card-text v-for="(c, cIndex) in classes[tIndex]" :key="cIndex">{{c + ", "}}</v-card-text>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <v-card-text v-for="(c, cIndex) in classes[tIndex]" :key="cIndex">{{
+        c + ", "
+      }}</v-card-text>
+      <br />
+      <br />
+      <br />
     </v-card>
   </div>
 </template>
 
 <script>
-  var Airtable = require("airtable");
-  const sleep = function(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  };
-  export default {
-    name: "Classes",
-    data() {
-      return {
-        apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
-        apiKey: "keyLVnvjV4bFHXOaD",
-        records: [],
-        classes: [],
-        titles: []
-      };
-    },
+var Airtable = require("airtable");
+const sleep = function(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+export default {
+  name: "Classes",
+  data() {
+    return {
+      apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
+      apiKey: "keyLVnvjV4bFHXOaD",
+      records: [],
+      classes: [],
+      titles: []
+    };
+  },
 
-    mounted: async function() {
-      var v;
-      v = this.teacherData()
-      this.showData(v)
-    },
+  mounted: async function() {
+    var v;
+    v = this.teacherData();
+    this.showData(v);
+  },
 
-    methods: {
-
+  methods: {
     showData: async function(teacher) {
-      this.records = this.getData()
+      this.records = this.getData();
       await sleep(500);
       var i;
       var l;
@@ -51,17 +48,16 @@ import Vue from "vue";
       var cls = [];
       let students = this.records[0];
       let clas = this.records[1];
-      for (i=0; i < clas.length; i++) {
-        for (t=0; t < teacher.length; t++) {
-
+      for (i = 0; i < clas.length; i++) {
+        for (t = 0; t < teacher.length; t++) {
           if (clas[i].fields.tid[0] === teacher[t].id) {
             cls.push(clas[i]);
           }
         }
       }
-      for (i=0; i < cls.length; i++) {
+      for (i = 0; i < cls.length; i++) {
         l = this.checkData(students, cls[i]);
-        this.titles.push(cls[i].fields.Name)
+        this.titles.push(cls[i].fields.Name);
         this.classes.push(l);
       }
     },
@@ -88,7 +84,7 @@ import Vue from "vue";
             }
           }
         );
-        return list;
+      return list;
     },
 
     //Function used to add points to airtable
@@ -164,27 +160,27 @@ import Vue from "vue";
             }
           }
         );
-        base("Class")
-          .select({
-            view: "Grid view"
-          })
-          .eachPage(
-            function page(records, fetchNextPage) {
-              records.forEach(function(record) {
-                list1.push(record);
-              });
-              fetchNextPage();
-            },
-            function done(err) {
-              if (err) {
-                console.error(err);
-                return;
-              }
+      base("Class")
+        .select({
+          view: "Grid view"
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(function(record) {
+              list1.push(record);
+            });
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
             }
-          );
-          allList.push(list);
-          allList.push(list1);
-          return allList;
+          }
+        );
+      allList.push(list);
+      allList.push(list1);
+      return allList;
     },
 
     checkData: function(data, classs) {
@@ -199,60 +195,58 @@ import Vue from "vue";
           if (data[t].fields.Member[0] == studentList[i]) {
             l = data[t].fields.Name + " " + data[t].fields.Surname;
             studentList1.push(l);
-              }
-            }
           }
-          return studentList1;
         }
       }
-    };
+      return studentList1;
+    }
+  }
+};
 </script>
-=======
-import Vuetify from 'vuetify'
-import Vue from "vue";
 
 <template>
   <div>
     <v-card v-for="(title, tIndex) in titles" :key="tIndex">
       <v-card-title> {{ title }} </v-card-title>
-      <br/>
+      <br />
       <v-card-subtitle>Students:</v-card-subtitle>
-      <br/>
-      <v-card-text v-for="(c, cIndex) in classes[tIndex]" :key="cIndex">{{c + ", "}}</v-card-text>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <v-card-text v-for="(c, cIndex) in classes[tIndex]" :key="cIndex">{{
+        c + ", "
+      }}</v-card-text>
+      <br />
+      <br />
+      <br />
     </v-card>
   </div>
 </template>
 
 <script>
-  var Airtable = require("airtable");
-  const sleep = function(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  };
-  export default {
-    name: "Classes",
-    data() {
-      return {
-        apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
-        apiKey: "keyLVnvjV4bFHXOaD",
-        records: [],
-        classes: [],
-        titles: []
-      };
-    },
+var Airtable = require("airtable");
+const sleep = function(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+export default {
+  name: "Classes",
+  data() {
+    return {
+      apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
+      apiKey: "keyLVnvjV4bFHXOaD",
+      records: [],
+      classes: [],
+      titles: []
+    };
+  },
 
-    mounted: async function() {
-      var v;
-      v = this.teacherData()
-      this.showData(v)
-    },
+  mounted: async function() {
+    var v;
+    v = this.teacherData();
+    this.showData(v);
+  },
 
-    methods: {
-
+  methods: {
     showData: async function(teacher) {
-      this.records = this.getData()
+      this.records = this.getData();
       await sleep(500);
       var i;
       var l;
@@ -260,17 +254,16 @@ import Vue from "vue";
       var cls = [];
       let students = this.records[0];
       let clas = this.records[1];
-      for (i=0; i < clas.length; i++) {
-        for (t=0; t < teacher.length; t++) {
-
+      for (i = 0; i < clas.length; i++) {
+        for (t = 0; t < teacher.length; t++) {
           if (clas[i].fields.tid[0] === teacher[t].id) {
             cls.push(clas[i]);
           }
         }
       }
-      for (i=0; i < cls.length; i++) {
+      for (i = 0; i < cls.length; i++) {
         l = this.checkData(students, cls[i]);
-        this.titles.push(cls[i].fields.Name)
+        this.titles.push(cls[i].fields.Name);
         this.classes.push(l);
       }
     },
@@ -297,7 +290,7 @@ import Vue from "vue";
             }
           }
         );
-        return list;
+      return list;
     },
 
     //Function used to add points to airtable
@@ -373,27 +366,27 @@ import Vue from "vue";
             }
           }
         );
-        base("Class")
-          .select({
-            view: "Grid view"
-          })
-          .eachPage(
-            function page(records, fetchNextPage) {
-              records.forEach(function(record) {
-                list1.push(record);
-              });
-              fetchNextPage();
-            },
-            function done(err) {
-              if (err) {
-                console.error(err);
-                return;
-              }
+      base("Class")
+        .select({
+          view: "Grid view"
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(function(record) {
+              list1.push(record);
+            });
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
             }
-          );
-          allList.push(list);
-          allList.push(list1);
-          return allList;
+          }
+        );
+      allList.push(list);
+      allList.push(list1);
+      return allList;
     },
 
     checkData: function(data, classs) {
@@ -408,12 +401,11 @@ import Vue from "vue";
           if (data[t].fields.Member[0] == studentList[i]) {
             l = data[t].fields.Name + " " + data[t].fields.Surname;
             studentList1.push(l);
-              }
-            }
           }
-          return studentList1;
         }
       }
-    };
+      return studentList1;
+    }
+  }
+};
 </script>
->>>>>>> stable
