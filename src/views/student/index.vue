@@ -36,7 +36,7 @@
     </nav>
 
     <v-main>
-      <v-container fluid>
+      <v-container fluid align-start justify-start>
         <v-layout align-start justify-start>
           <card
             title="Matrix multiplication"
@@ -46,6 +46,15 @@
             state="waiting"
             date="July 3 2020"
           />
+
+          <card                                                                                                                                      
+            title="Plato's Cave Allegory"                                                                                                            
+            classname="Year 11 RS"                                                                                                                
+            teacher="Jane Doe"                                                                                                                    
+            kind="Presentation"                                                                                                                          
+            state="late"                                                                                                                          
+            date="July 1 2020"                                                                                                                       
+          /> 
         </v-layout>
       </v-container>
     </v-main>
