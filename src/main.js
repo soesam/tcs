@@ -1,6 +1,6 @@
 import Vue from "vue";
 import firebase from "firebase/app";
-import app from "./app.vue";
+import app from "./App.vue";
 import "./worker";
 import router from "./router";
 import store from "./store";
