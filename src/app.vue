@@ -1,4 +1,14 @@
 <template>
+<<<<<<< HEAD
+  <v-app class="gray lighten-4">
+    <v-main>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+    <v-footer app></v-footer>
+  </v-app>
+=======
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -6,6 +16,7 @@
     </div>
     <router-view />
   </div>
+>>>>>>> 75e40524b6fd81e501a45675a887d704c6dd074e
 </template>
 
 <style>
