@@ -7,7 +7,10 @@
       </p>
       <p>{{ classname }} • {{ teacher }}</p>
       <div>
-        <span style='font-weight: bold;' v-if="state === 'again'" class="text--red"
+        <span
+          style="font-weight: bold;"
+          v-if="state === 'again'"
+          class="text--red"
           >Hand in again by {{ date }}</span
         >
         <span v-if="state === 'late'" class="text--red">handed in late</span>
@@ -21,13 +24,13 @@
       </div>
     </v-card-text>
     <v-card-actions>
-      <v-btn icon color='purple darken-4'>
+      <v-btn icon color="purple darken-4">
         <v-icon>mdi-eye</v-icon>
       </v-btn>
       <v-btn icon>
-        <v-icon color='purple darken-4'>mdi-comment-account</v-icon>
+        <v-icon color="purple darken-4">mdi-comment-account</v-icon>
       </v-btn>
-      <v-btn icon color='purple darken-4'>
+      <v-btn icon color="purple darken-4">
         <v-icon>mdi-check-bold</v-icon>
       </v-btn>
     </v-card-actions>
