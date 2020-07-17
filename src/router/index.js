@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import site from "@/views/site.vue";
-
+import Classes from "@/views/Classes.vue"
 // tests
 
 import student from "@/views/student/index.vue";

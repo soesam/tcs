@@ -1,3 +1,3 @@
-# tcs.io
+# tcs
 
-A simple web app for Thames Christian School.
+An app for Thames Christian School's data needs.
