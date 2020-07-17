@@ -1,4 +1,5 @@
 <template>
+  <div class='student'>
   <nav>
     <v-navigation-drawer app clipped v-model="drawer">
       <v-list>
@@ -33,14 +34,25 @@
       </v-btn>
     </v-app-bar>
   </nav>
+
+    <v-main>                                                                                                                                         
+      <v-container fluid>                                                                                                                
+      </v-container>                                                                                                                                 
+    </v-main>
+  </div>
 </template>
 
 <script>
+import card from './card';
+
 export default {
   data() {
     return {
       drawer: null
     };
+  },
+  components: {
+    card
   }
 };
 </script>
