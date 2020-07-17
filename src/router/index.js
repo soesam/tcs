@@ -4,7 +4,7 @@ import site from "@/views/site.vue";
 import Classes from "@/views/Classes.vue"
 // tests
 
-import student from '@/views/student/index.vue';:Wq
+import student from '@/views/student/index.vue';
 
 
 Vue.use(VueRouter);
