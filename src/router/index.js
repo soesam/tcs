@@ -1,7 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Classes from "../views/Classes.vue";
+import site from "@/views/site.vue";
+
+// tests
+
+import student from '@/views/student/index.vue';:Wq
 
 
 Vue.use(VueRouter);
@@ -9,22 +12,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "site",
+    component: site
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  },
-  {
-    path: "/classes",
-    name: "Classes",
-    component: Classes
+    path: '/tmp-student',
+    name: 'student',
+    component: student
   }
 ];
 
@@ -33,5 +27,9 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+// TODO: hook before each. If the user is a student grant access to routes starting with student/. If a teacher,
+// grant access to those starting with teacher/. Else, if the user is logged in grant access to those under shared/.
+// otherwise, grant access only to site.vue. 
 
 export default router;
