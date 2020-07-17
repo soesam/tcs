@@ -38,7 +38,14 @@
     <v-main>
       <v-container fluid>
         <v-layout align-start justify-start>
-          <card />
+          <card
+            title="Matrix multiplication"
+            classname="Year 11 Maths"
+            teacher="Marcus Hart"
+            kind="Revision"
+            state="waiting"
+            date="July 3 2020"
+          />
         </v-layout>
       </v-container>
     </v-main>
