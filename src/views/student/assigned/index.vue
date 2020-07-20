@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import card from "./task/card";
+import card from "./card";
 import navigation from "@/components/navigation.vue";
 
 export default {
