@@ -29,9 +29,6 @@
 <script>
 export default {
   name: "navigation",
-  components: {
-    profile
-  },
   data() {
     return {
       drawer: null,
