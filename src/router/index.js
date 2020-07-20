@@ -1,16 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import profile from "@/views/profile.vue";
 import student from "@/views/student/assigned/index.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/profile",
-    name: "profile",
-    component: profile
-  },
   {
     path: "/student",
     name: "student",

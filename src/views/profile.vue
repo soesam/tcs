@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card>
+    <v-card max-width="250">
       <v-container fluid align-start justify-start>
         <v-avatar color="teal" size="48">
           <span class="white--text headline">JS</span>
