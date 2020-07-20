@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <nav>
     <v-navigation-drawer app clipped v-model="drawer">
@@ -13,25 +12,19 @@
         </v-list-item>
 
         <v-list-item link>
-        <v-dialog
-          v-model="dialog"
-          width="250"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-            text
-            v-bind="attrs"
-            v-on="on">
-              <v-list-item-action>
+          <v-dialog v-model="dialog" width="250">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn text v-bind="attrs" v-on="on">
+                <v-list-item-action>
                   <v-icon>mdi-account-circle</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>My Profile</v-list-item-title>
-              </v-list-item-content>
-            </v-btn>
-          </template>
-          <profile/>
-        </v-dialog>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>My Profile</v-list-item-title>
+                </v-list-item-content>
+              </v-btn>
+            </template>
+            <profile />
+          </v-dialog>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -50,7 +43,7 @@
 </template>
 
 <script>
-import profile from "@/views/profile.vue"
+import profile from "@/views/profile.vue";
 export default {
   name: "navigation",
   props: { items: Array },
@@ -60,7 +53,7 @@ export default {
   }
 };
 </script>
-=======
+
 <template>
   <nav>
     <v-navigation-drawer app clipped v-model="drawer">
@@ -103,4 +96,3 @@ export default {
   }
 };
 </script>
->>>>>>> da6de644f487907d17b7a83188a8fabad90fbffe
