@@ -28,7 +28,7 @@ const router = new VueRouter({
 // grant access to those starting with teacher/. Else, if the user is logged in grant access to those under shared/.
 // otherwise, grant access only to site.vue.
 
-// TODO: move app-bar and app-drawer out of individual views and into app. 
+// TODO: move app-bar and app-drawer out of individual views and into app.
 // it can be imported by each view and they can specify its mode, i.e. student or teacher.
 
 export default router;
