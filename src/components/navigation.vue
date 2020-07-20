@@ -12,12 +12,25 @@
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-account-circle</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Me</v-list-item-title>
-          </v-list-item-content>
+        <v-dialog
+          v-model="dialog"
+          width="250"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+            text
+            v-bind="attrs"
+            v-on="on">
+              <v-list-item-action>
+                  <v-icon>mdi-account-circle</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>My Profile</v-list-item-title>
+              </v-list-item-content>
+            </v-btn>
+          </template>
+          <profile/>
+        </v-dialog>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -36,8 +49,13 @@
 </template>
 
 <script>
+import profile from "@/views/profile.vue"
 export default {
   name: "navigation",
-  props: { items: Array }
+  props: { items: Array },
+
+  components: {
+    profile
+  }
 };
 </script>
