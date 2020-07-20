@@ -18,33 +18,31 @@
     </template>
 
     <v-card>
-      <v-toolbar dark color="primary">
+      <v-toolbar dark color="teal darken-1">
         <v-btn icon dark @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>Settings</v-toolbar-title>
+        <v-toolbar-title>Matrix Multiplication</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn dark text @click="dialog = false">Save</v-btn>
+          <v-btn dark text @click="dialog = false">Close</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <v-list three-line subheader>
-        <v-subheader>User Controls</v-subheader>
+        <v-subheader>About</v-subheader>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Content filtering</v-list-item-title>
+            <v-list-item-title></v-list-item-title>
             <v-list-item-subtitle
-              >Set the content filtering level to restrict apps that can be
-              downloaded</v-list-item-subtitle
+              >Matrix multiplication is a topic lots of you have said you find to be difficult. This is your time to practice and improve. We'll also be covering this next week in lesson. Good luck to you all.</v-list-item-subtitle
             >
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Password</v-list-item-title>
+            <v-list-item-title>Attachments</v-list-item-title>
             <v-list-item-subtitle
-              >Require password for purchase or use password to restrict
-              purchase</v-list-item-subtitle
+              >This assignment doesn't contain any attachments. If this is a mistake, contact the teacher.</v-list-item-subtitle
             >
           </v-list-item-content>
         </v-list-item>
