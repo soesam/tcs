@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import site from "@/views/site.vue";
 import student from "@/views/student/assigned/index.vue";
-import profile from "@/views/student/profile.vue";
 
 Vue.use(VueRouter);
 
@@ -17,11 +16,6 @@ const routes = [
     name: "student",
     component: student
   },
-  {
-    path: "/test/profile",
-    name: "profile",
-    component: profile
-  }
 ];
 
 const router = new VueRouter({
