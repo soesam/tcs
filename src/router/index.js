@@ -1,12 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import home from "@/views/site.vue";
+import site from "@/views/site.vue";
 import student from "@/views/student/assigned/index.vue";
 import profile from "@/views/student/profile.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/tests/site",
+    name: "site",
+    component: site
+  },
   {
     path: "/tests/student",
     name: "student",
