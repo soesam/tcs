@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve && python3 ./compile.py",
-    "build": "vue-cli-service build && python3 ./compile.py",
+    "serve": "python3 ./compile.py; vue-cli-service serve",
+    "build": "python3 ./compile.py; vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
