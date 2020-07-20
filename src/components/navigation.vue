@@ -34,3 +34,10 @@
     </v-app-bar>
   </nav>
 </template>
+
+<script>
+export default {
+  name: "navigation",
+  props: { items: Array }
+};
+</script>
