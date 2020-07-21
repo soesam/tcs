@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="320" style="margin: 20px!important;">
+  <v-card class="mx-auto" min-width='250' max-width="320" style="margin: 20px!important;font-weight: 500;">
     <v-card-text>
       <p class="headline text--primary" style="padding-top: 11px;">
         {{ title }}
