@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" min-width='250' max-width="320" style="margin: 20px!important;font-weight: 500;">
+  <v-card class="mx-auto" min-width='320' max-width="320" style="margin: 20px!important;font-weight: 500;">
     <v-card-text>
       <p class="headline text--primary" style="padding-top: 11px;">
         {{ title }}
@@ -22,7 +22,7 @@
       </div>
     </v-card-text>
     <v-card-actions>
-      <show />
+      <show :content="content"/>
       <v-btn icon>
         <v-icon color="black lighten-1">mdi-comment-account</v-icon>
       </v-btn>
@@ -37,7 +37,7 @@
 import show from "./show.vue";
 
 export default {
-  props: ["state", "title", "classname", "teacher", "date"],
+  props: ["state", "title", "classname", "teacher", "date", "content"],
   components: {
     show
   }
