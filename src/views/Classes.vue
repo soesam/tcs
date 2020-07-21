@@ -26,8 +26,8 @@ export default {
   name: "Classes",
   data() {
     return {
-      apiUrl: "https://api.airtable/com/v0/appvLWxrF80mDK8Xq/",
-      apiKey: "keyLVnvjV4bFHXOaD",
+      apiUrl: ,
+      apiKey: ,
       records: [],
       classes: [],
       titles: []
