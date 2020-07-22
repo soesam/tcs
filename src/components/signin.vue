@@ -16,7 +16,7 @@
         <br/>
         <input v-model="email" placeholder="Enter your email">
         <br/>
-        <p>{{email}}</p>
+        <button :onclick="getStudent(email)">Submit</button>
       </v-container>
     </v-main>
   </div>
@@ -29,5 +29,25 @@
           email: []
       }
     },
+
+    mounted: function() {
+      this.getStudent();
+    },
+    methods: {
+      getStudent: async function(email) {
+        const records = await fetch("http://localhost:8000/students");
+        const students = (await records.json()).table;
+        students.map(this.checkEmail, email);
+      },
+
+      checkEmail: function(test) {
+        if (test.fields.Email === this.email) {
+          this.$emit(test)
+          return test;
+        } else {
+          return false;
+        }
+      }
+    }
   };
 </script>
