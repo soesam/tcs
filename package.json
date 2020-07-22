@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "python3 ./src/plugins/fast.js; vue-cli-service serve",
-    "build": "python3 ./src/plugins/fast.js; vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "npm run fast; vue-cli-service serve",
+    "build": "npm run fast; vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "fast": "python3 ./src/plugins/fast.js.gz"
   },
   "dependencies": {
     "airtable": "^0.8.1",
