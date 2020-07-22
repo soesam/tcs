@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import card from "@/components/card";
-import navigation from "@/components/navigation.vue";
+import card from "./card";
+import navigation from "./navigation.vue";
 export default {
   data() {
     return {
