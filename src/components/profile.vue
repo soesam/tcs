@@ -33,30 +33,30 @@
 Homework hand in rate Detentions */
 
 <script>
-  export default {
-    data() {
-      return {
-        name: "John Smith",
-        email: "jsmith@gmail.com",
-        gp: 86,
-        rp: 2,
-        handin: "89%",
-        detentions: 1
-      };
-    },
+export default {
+  data() {
+    return {
+      name: "John Smith",
+      email: "jsmith@gmail.com",
+      gp: 86,
+      rp: 2,
+      handin: "89%",
+      detentions: 1
+    };
+  },
 
-    mounted: async function() {
+  mounted: async function() {
+    const promise = await fetch("http://localhost:8000/classes");
+    console.log("promise");
+    console.log(promise.text());
+  },
+
+  methods: {
+    fetchRecord: async function() {
       const promise = await fetch("http://localhost:8000/classes");
       console.log("promise");
-      console.log(promise.text());
-    },
-
-    methods: {
-      fetchRecord: async function() {
-        const promise = await fetch("http://localhost:8000/classes");
-        console.log("promise");
-        console.log(promise.json);
-     }
+      console.log(promise.json);
     }
-  };
+  }
+};
 </script>

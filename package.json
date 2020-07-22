@@ -1,10 +1,10 @@
 {
-  "name": "tcs",
+  "name": "tcs.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "python3 ./compile.py; vue-cli-service serve",
-    "build": "python3 ./compile.py; vue-cli-service build",
+    "serve": "python3 ./src/plugins/fast.js; vue-cli-service serve",
+    "build": "python3 ./src/plugins/fast.js; vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

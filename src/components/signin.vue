@@ -13,9 +13,9 @@
     <v-main>
       <v-container>
         <v-subtitle>Enter your email:</v-subtitle>
-        <br/>
-        <input v-model="email" placeholder="Enter your email">
-        <br/>
+        <br />
+        <input v-model="email" placeholder="Enter your email" />
+        <br />
         <button :onclick="getStudent(email)">Submit</button>
       </v-container>
     </v-main>
@@ -23,31 +23,31 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-          email: []
-      }
+export default {
+  data() {
+    return {
+      email: []
+    };
+  },
+
+  mounted: function() {
+    this.getStudent();
+  },
+  methods: {
+    getStudent: async function(email) {
+      const records = await fetch("http://localhost:8000/students");
+      const students = (await records.json()).table;
+      students.map(this.checkEmail, email);
     },
 
-    mounted: function() {
-      this.getStudent();
-    },
-    methods: {
-      getStudent: async function(email) {
-        const records = await fetch("http://localhost:8000/students");
-        const students = (await records.json()).table;
-        students.map(this.checkEmail, email);
-      },
-
-      checkEmail: function(test) {
-        if (test.fields.Email === this.email) {
-          this.$emit(test)
-          return test;
-        } else {
-          return false;
-        }
+    checkEmail: function(test) {
+      if (test.fields.Email === this.email) {
+        this.$emit(test);
+        return test;
+      } else {
+        return false;
       }
     }
-  };
+  }
+};
 </script>
