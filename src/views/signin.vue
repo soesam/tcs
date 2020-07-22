@@ -12,7 +12,7 @@
     </v-app-bar>
     <v-main>
       <v-container>
-        <v- input v-model="email" placeholder="Enter your email">
+        <v-input v-model="email" placeholder="Enter your email">
         </v-input>
       </v-container>
     </v-main>

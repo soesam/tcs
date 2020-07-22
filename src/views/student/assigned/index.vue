@@ -19,9 +19,8 @@
 </template>
 
 <script>
-import card from "./card";
+import card from "@/components/card";
 import navigation from "@/components/navigation.vue";
-var Airtable = require("airtable");
 export default {
   data() {
     return {
@@ -34,35 +33,9 @@ export default {
   },
 
   mounted: async function() {
-    this.assignments = await this.getData()
+     const records = await fetch("http://localhost:8000/assignments");
+     this.assignments = (await records.json()).table;
   },
-  methods: {
-    getData: function() {
-      var list = [];
-      var base = new Airtable({ apiKey: "keyLVnvjV4bFHXOaD" }).base(
-        "appvLWxrF80mDK8Xq"
-      );
-      base("Homework")
-        .select({
-          view: "Grid view"
-        })
-        .eachPage(
-          function page(records, fetchNextPage) {
-            records.forEach(function(record) {
-              list.push(record);
-            });
-            fetchNextPage();
-          },
-          function done(err) {
-            if (err) {
-              console.error(err);
-              return;
-            }
-          }
-        );
-      return list;
-    },
-  }
 };
 
 
