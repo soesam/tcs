@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import profile from "@/views/profile.vue"
+import profile from "./profile.vue"
 export default {
   name: "navigation",
   props: { items: Array },
