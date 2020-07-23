@@ -3,13 +3,14 @@
 </template>
 
 <script>
-  import assignments from "@components/assignments.vue"
+  import assignments from "@/components/Multi/assignments.vue"
   export default {
     data() {
       return {
         records: []
       }
-    }
+    },
+
     components: {
       assignments
     },

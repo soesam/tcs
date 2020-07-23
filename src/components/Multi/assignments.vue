@@ -22,15 +22,12 @@
 import card from "./card";
 import navigation from "./navigation.vue";
 export default {
-  props: [ "assignments", "role"],
+  props: ["assignments"],
 
   components: {
     card,
     navigation
   },
-    
-  mounted: function() {
 
-  }
 };
 </script>

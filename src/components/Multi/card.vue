@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import show from "./show.vue";
+import show from "@/components/show.vue";
 
 export default {
   props: ["state", "title", "classname", "teacher", "date", "content"],
