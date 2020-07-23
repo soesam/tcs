@@ -22,19 +22,15 @@
 import card from "./card";
 import navigation from "./navigation.vue";
 export default {
-  data() {
-    return {
-      assignments: []
-    };
-  },
+  props: [ "assignments", "role"],
+
   components: {
     card,
     navigation
   },
 
-  mounted: async function() {
-    const records = await fetch("http://localhost:8000/assignments");
-    this.assignments = (await records.json()).table;
+  mounted: function() {
+    
   }
 };
 </script>
