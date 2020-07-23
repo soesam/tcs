@@ -17,7 +17,7 @@
         >
         <!-- TODO: should just hide in this case -->
         <span v-if="state === 'waiting'">
-          ><span class="teal--text">Hand in by {{ date }}</span></span
+          <span class="teal--text">Hand in by {{ date }}</span></span
         >
       </div>
     </v-card-text>

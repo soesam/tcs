@@ -34,16 +34,7 @@ Homework hand in rate Detentions */
 
 <script>
   export default {
-    data() {
-      return {
-        name: "John Smith",
-        email: "jsmith@gmail.com",
-        gp: 86,
-        rp: 2,
-        handin: "89%",
-        detentions: 1
-      };
-    },
+    props: [name, email, gp, rp, handin, detentions ],
 
     mounted: async function() {
       const promise = await fetch("http://localhost:8000/classes");

@@ -29,7 +29,13 @@
               </v-list-item-content>
             </v-btn>
           </template>
-          <profile/>
+          <profile
+            name="name"
+            email="email"
+            gp="gp"
+            rp="rp"
+            handin="handin"
+            detentions="detentions"/>
         </v-dialog>
         </v-list-item>
       </v-list>
@@ -52,7 +58,7 @@
 import profile from "./profile.vue"
 export default {
   name: "navigation",
-  props: { items: Array },
+  props: [ name, email, gp, rp, handin, detentions],
 
   components: {
     profile
