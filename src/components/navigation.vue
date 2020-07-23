@@ -52,7 +52,7 @@
 import profile from "./profile.vue";
 export default {
   name: "navigation",
-  props: [ name, email, gp, rp, handin, detentions],
+  props: [ "name", "email", "gp", "rp", "handin", "detentions"],
 
   components: {
     profile

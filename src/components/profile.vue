@@ -34,7 +34,7 @@ Homework hand in rate Detentions */
 
 <script>
   export default {
-    props: [name, email, gp, rp, handin, detentions ],
+    props: [ "name", "email"," gp", "rp", "handin"," detentions" ],
 
   mounted: async function() {
     const promise = await fetch("http://localhost:8000/classes");
