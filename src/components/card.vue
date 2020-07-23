@@ -1,5 +1,10 @@
 <template>
-  <v-card class="mx-auto" min-width='320' max-width="320" style="margin: 20px!important;font-weight: 500;">
+  <v-card
+    class="mx-auto"
+    min-width="320"
+    max-width="320"
+    style="margin: 20px!important;font-weight: 500;"
+  >
     <v-card-text>
       <p class="headline text--primary" style="padding-top: 11px;">
         {{ title }}
@@ -22,7 +27,7 @@
       </div>
     </v-card-text>
     <v-card-actions>
-      <show :content="content"/>
+      <show :content="content" />
       <v-btn icon>
         <v-icon color="black lighten-1">mdi-comment-account</v-icon>
       </v-btn>

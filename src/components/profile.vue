@@ -36,18 +36,18 @@ Homework hand in rate Detentions */
   export default {
     props: [name, email, gp, rp, handin, detentions ],
 
-    mounted: async function() {
+  mounted: async function() {
+    const promise = await fetch("http://localhost:8000/classes");
+    console.log("promise");
+    console.log(promise.text());
+  },
+
+  methods: {
+    fetchRecord: async function() {
       const promise = await fetch("http://localhost:8000/classes");
       console.log("promise");
-      console.log(promise.text());
-    },
-
-    methods: {
-      fetchRecord: async function() {
-        const promise = await fetch("http://localhost:8000/classes");
-        console.log("promise");
-        console.log(promise.json);
-     }
+      console.log(promise.json);
     }
-  };
+  }
+};
 </script>

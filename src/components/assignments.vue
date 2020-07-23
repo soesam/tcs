@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       assignments: []
-    }
+    };
   },
   components: {
     card,
@@ -33,10 +33,8 @@ export default {
   },
 
   mounted: async function() {
-     const records = await fetch("http://localhost:8000/assignments");
-     this.assignments = (await records.json()).table;
-  },
+    const records = await fetch("http://localhost:8000/assignments");
+    this.assignments = (await records.json()).table;
+  }
 };
-
-
 </script>

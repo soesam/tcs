@@ -12,16 +12,10 @@
         </v-list-item>
 
         <v-list-item link>
-        <v-dialog
-          v-model="dialog"
-          width="250"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-            text
-            v-bind="attrs"
-            v-on="on">
-              <v-list-item-action>
+          <v-dialog v-model="dialog" width="250">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn text v-bind="attrs" v-on="on">
+                <v-list-item-action>
                   <v-icon>mdi-account-circle</v-icon>
               </v-list-item-action>
               <v-list-item-content>
@@ -55,7 +49,7 @@
 </template>
 
 <script>
-import profile from "./profile.vue"
+import profile from "./profile.vue";
 export default {
   name: "navigation",
   props: [ name, email, gp, rp, handin, detentions],

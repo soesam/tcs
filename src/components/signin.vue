@@ -23,12 +23,12 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-          email: []
-      }
-    },
+export default {
+  data() {
+    return {
+      email: []
+    };
+  },
 
     methods: {
       getStudent: async function(email) {
@@ -47,5 +47,6 @@
         }
       }
     }
-  };
+  }
+};
 </script>

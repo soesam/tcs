@@ -15,7 +15,7 @@ const routes = [
     path: "/tests/student",
     name: "student",
     component: student
-  },
+  }
 ];
 
 const router = new VueRouter({

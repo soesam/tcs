@@ -1,9 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    fullscreen
-    hide-overlay
-  >
+  <v-dialog v-model="dialog" fullscreen hide-overlay>
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         style="margin-right: 8px;"
@@ -32,16 +28,15 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title></v-list-item-title>
-            <v-list-item-subtitle
-              >{{content}}</v-list-item-subtitle
-            >
+            <v-list-item-subtitle>{{ content }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Attachments</v-list-item-title>
             <v-list-item-subtitle
-              >This assignment doesn't contain any attachments. If this is a mistake, contact the teacher.</v-list-item-subtitle
+              >This assignment doesn't contain any attachments. If this is a
+              mistake, contact the teacher.</v-list-item-subtitle
             >
           </v-list-item-content>
         </v-list-item>
