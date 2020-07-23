@@ -28,9 +28,9 @@ export default {
     card,
     navigation
   },
-
-  mounted: function() {
     
+  mounted: function() {
+
   }
 };
 </script>
