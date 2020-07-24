@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loading">
-    <assignments :assignments="records"/>
+    <assignments :assignments="records" role="staff"/>
   </div>
 </template>
 

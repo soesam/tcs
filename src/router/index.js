@@ -1,15 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import signin from "@/components/Multi/assignments.vue";
 import student from "@/views/student/assignment.vue";
+import teacher from "@/views/teacher/assignment.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/tests/signin",
-    name: "signin",
-    component: signin
+    path: "/tests/teacher",
+    name: "teacher",
+    component: teacher
   },
   {
     path: "/tests/student",

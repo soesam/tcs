@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loading">
-    <assignments :assignments="records"/>
+    <assignments :assignments="records" role="student"/>
   </div>
 </template>
 
@@ -23,7 +23,6 @@
       const json = await data.json();
       this.records = json.table;
       this.loading = false;
-      console.log("records", this.records)
     }
   }
 </script>

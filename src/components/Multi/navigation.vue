@@ -1,7 +1,7 @@
 <template>
   <nav>
     <v-navigation-drawer app clipped v-model="drawer">
-      <v-list>
+      <v-list> 
         <v-list-item link>
           <v-list-item-action>
             <v-icon>mdi-view-dashboard</v-icon>

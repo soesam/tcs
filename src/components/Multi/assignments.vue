@@ -14,19 +14,24 @@
           />
         </v-row>
       </v-container>
+      <div v-if="role === 'staff'">
+        <create/>
+      </div>
     </v-main>
   </div>
 </template>
 
 <script>
 import card from "./card";
+import create from "@/components/creator.vue"
 import navigation from "./navigation.vue";
 export default {
-  props: ["assignments"],
+  props: ["assignments", "role"],
 
   components: {
     card,
-    navigation
+    navigation,
+    create
   },
 
   mounted: function() {
