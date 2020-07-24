@@ -29,5 +29,9 @@ export default {
     navigation
   },
 
+  mounted: function() {
+    console.log("assignments", this.assignments)
+  }
+
 };
 </script>
